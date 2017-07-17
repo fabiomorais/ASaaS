@@ -14,12 +14,13 @@ for (trace in traces) {
      for (metric in metrics) {
           
           df_threshold   = read.table(paste("../../reactive/data/threshold/threshold-perfect-", trace, "-", prov_time, "-", metric, "-", range_size, ".dat", sep = ""), header = T)
-              
+
           if (metric == "cpu") {
-               
-               df_threshold = df_threshold %>% rename(METRIC_UTIL = CPU_UTIL, METRIC_ALLOC = CPU_ALLOC, METRIC_USAGE = CPU_USAGE)     
+               df_threshold = df_threshold %>% ungroup() %>% mutate(METRIC_UTIL = CPU_UTIL, METRIC_ALLOC = CPU_ALLOC, METRIC_USAGE = CPU_USAGE) %>%
+                    data.frame() %>% select(-CPU_UTIL, -CPU_ALLOC, -CPU_USAGE)
           } else {
-               df_threshold = df_threshold %>% rename(METRIC_UTIL = MEM_UTIL, METRIC_ALLOC = MEM_ALLOC, METRIC_USAGE = MEM_USAGE)
+               df_threshold = df_threshold %>% ungroup() %>% mutate(METRIC_UTIL = MEM_UTIL, METRIC_ALLOC = MEM_ALLOC, METRIC_USAGE = MEM_USAGE) %>%
+                    data.frame() %>% select(-MEM_UTIL, -MEM_ALLOC, -MEM_USAGE)
           }
           
           num_tmp        = df_threshold %>% mutate(TRACE = trace, PROV_TIME = prov_time, RANGE_SIZE = range_size)
