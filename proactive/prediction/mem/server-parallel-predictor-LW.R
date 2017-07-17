@@ -20,10 +20,10 @@ grain_unit		<- list("5" = var_5m, "10" = 10 * var_1m, "60" = var_1h)
 
 trace_number	<- as.integer(args[1])
 num_cores		<- as.integer(args[2])
-trace_type		<- as.character(args[3])
+trace_type	<- as.character(args[3])
 pred_type		<- as.character(args[4])
 
-input_dir		<- paste("../data/", trace_type, "/", sep = "")
+input_dir		     <- paste("../../../data/", trace_type, "/", sep = "")
 outpur_dir		<- paste("data/pred/", pred_type, "/", sep = "")
 
 num_period		<- 0
