@@ -3,4 +3,7 @@
 utils
 .Rproj.user
 *.Rproj
-data/*
+*.RData
+*.Rhistory
+reactive/data
+proactive/data
