@@ -59,7 +59,7 @@ if (!file.exists(file_name)) {
 		
 		begin_pred	<- Sys.time()
 		
-		try(system(paste("echo ", i, " > result-", trace_number, "-", policy_abr, ".out", sep = ""), intern = TRUE))	
+		try(system(paste("echo ", i, " > output/result-", trace_number, "-", policy_abr, ".out", sep = ""), intern = TRUE))	
 		
 		H			<- i
 		V			<- 1
@@ -135,11 +135,11 @@ if (!file.exists(file_name)) {
 	estimated_trace[,ncol(estimated_trace) + 1] <- num_period
 	names(estimated_trace)	<- c(names(estimated_trace)[1:(ncol(estimated_trace) - 1)], "PERIOD")
 	
-	file_name	<- paste(outpur_dir, "server-", trace_number, "-estimated-trace-", policy_abr, "-", num_period, "-", pred_type, ".dat", sep = "")
-	write.table(estimated_trace, file = file_name, row.names = FALSE)
-	
-	file_name	<- paste(outpur_dir, "server-", trace_number, "-diff-trace-", policy_abr, "-", num_period, "-", pred_type, ".dat", sep = "")
-	write.table(diff_trace, file = file_name, row.names = FALSE)
+	# file_name	<- paste(outpur_dir, "server-", trace_number, "-estimated-trace-", policy_abr, "-", num_period, "-", pred_type, ".dat", sep = "")
+	# write.table(estimated_trace, file = file_name, row.names = FALSE)
+	# 
+	# file_name	<- paste(outpur_dir, "server-", trace_number, "-diff-trace-", policy_abr, "-", num_period, "-", pred_type, ".dat", sep = "")
+	# write.table(diff_trace, file = file_name, row.names = FALSE)
 	
 }
 diff_mins	<- difftime(Sys.time(), begin, units = 'mins')

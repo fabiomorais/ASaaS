@@ -59,7 +59,7 @@ if (!file.exists(file_name)) {
 
 		begin_pred	<- Sys.time()
 		
-		try(system(paste("echo ", i, " > result-", trace_number, "-", policy_abr, ".out", sep = ""), intern = TRUE))
+		try(system(paste("echo ", i, " > output/result-", trace_number, "-", policy_abr, ".out", sep = ""), intern = TRUE))
 		
 		H			<- i
 		var			<- grain_unit[[as.character(pred_grain)]]
